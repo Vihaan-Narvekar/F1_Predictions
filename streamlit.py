@@ -100,15 +100,20 @@ qual_times = {}
 for i, driver in enumerate(drivers):
     col_idx = i % 2
     base_time = historical_qualifying_data.loc[historical_qualifying_data["Driver"] == driver, "QualifyingTime"].values[0]
+    
+    # Display the driver's name
+    cols[col_idx].markdown(f"**{driver}**")
+
+    # Create the slider
     percentage_change = cols[col_idx].slider(
-        f"Qualifying time change (%)", 
-            min_value=-10.0, 
-            max_value=10.0, 
-            value=0.0,
-            step=0.1,
-            format="%.1f%%",
-            key=f"qual_time_{driver}"
-        )
+        f"Qualifying time change (%) for {driver}",  # Ensure unique keys
+        min_value=-10.0, 
+        max_value=10.0, 
+        value=0.0,
+        step=0.1,
+        format="%.1f%%",
+        key=f"qual_time_{driver}"
+    )
     
     # Calculate the actual qualifying time based on the percentage change
     qual_times[driver] = base_time * (1 + percentage_change / 100)
