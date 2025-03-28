@@ -1,4 +1,4 @@
-F1 Race Predictor
+##F1 Race Predictor##
 
 The F1 Race Predictor is a machine learning-based tool designed to predict race outcomes based on historical data, qualifying results, and weather conditions. The model leverages the FastF1 API to fetch race data and uses Histogram-based Gradient Boosting Regression to make predictions.
 
